@@ -21,6 +21,13 @@ select 	c.name from countries c where c.national_day IS NULL
 
 -- 6.
 
+-- 9. Selezionare tutte le nazioni in cui si parla hindi, ordinate dalla più estesa alla meno estesa
+select c.name as nazioni_hindi from countries c 
+join country_languages cl on c.country_id=cl.country_id 
+join languages l on l.language_id=cl.language_id 
+where l.`language` like 'Hindi'
+order by c.area DESC
+
 -- 10. Modificare la nazione di nome Italy, inserendo come national day il 2 giugno 1946
 update countries set national_day = '1946-06-02'
-where name like  'Italy';
+where name like  'Italy'
