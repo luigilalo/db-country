@@ -11,3 +11,7 @@ from countries
 select r.name
 From regions r join continents c on r.continent_id=c.continent_id where c.name='Europe' 
 Order by name
+
+-- 4 Contare quante regioni sono presenti nel continente Africa
+select count(*)
+from regions r join continents c on r.continent_id=c.continent_id where c.name = 'Africa';
