@@ -19,7 +19,13 @@ from regions r join continents c on r.continent_id=c.continent_id where c.name =
 -- 5. Selezionare quali nazioni non hanno un national day
 select 	c.name from countries c where c.national_day IS NULL
 
--- 6.
+-- 6.  Per ogni nazione, in ordine alfabetico, selezionare il nome, la regione e il continente
+select c.name, r.name, c2.name from countries c join regions r 
+on c.region_id = r.region_id join continents c2 
+on c2.continent_id = r.continent_id
+group by c.name , r.name , c2.name 
+order by c.name ASC 
+
 
 -- 8. Selezionare il Gross domestic product (GDP) medio dello United Kingdom tra il 2000 e il 2010
 select c.name, AVG(cs.gdp)
