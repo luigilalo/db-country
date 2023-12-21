@@ -21,8 +21,15 @@ select 	c.name from countries c where c.national_day IS NULL
 
 -- 6.
 
+-- 8. Selezionare il Gross domestic product (GDP) medio dello United Kingdom tra il 2000 e il 2010
+select c.name, AVG(cs.gdp)
+from countries c join country_stats cs 
+on cs.country_id = c.country_id 
+where c.name like 'United Kingdom' AND cs.`year` >=2000 AND cs.`year` <= 2010
+GROUP by c.name 
+
 -- 9. Selezionare tutte le nazioni in cui si parla hindi, ordinate dalla più estesa alla meno estesa
-select c.name as nazioni_hindi from countries c 
+select c.name from countries c 
 join country_languages cl on c.country_id=cl.country_id 
 join languages l on l.language_id=cl.language_id 
 where l.`language` like 'Hindi'
