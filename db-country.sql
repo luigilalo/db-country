@@ -12,13 +12,15 @@ select r.name
 From regions r join continents c on r.continent_id=c.continent_id where c.name='Europe' 
 Order by name
 
--- 4 Contare quante regioni sono presenti nel continente Africa
+-- 4. Contare quante regioni sono presenti nel continente Africa
 select count(*)
 from regions r join continents c on r.continent_id=c.continent_id where c.name = 'Africa'
 
--- 5 Selezionare quali nazioni non hanno un national day
+-- 5. Selezionare quali nazioni non hanno un national day
 select 	c.name from countries c where c.national_day IS NULL
 
--- 10 Modificare la nazione di nome Italy, inserendo come national day il 2 giugno 1946
+-- 6.
+
+-- 10. Modificare la nazione di nome Italy, inserendo come national day il 2 giugno 1946
 update countries set national_day = '1946-06-02'
 where name like  'Italy';
