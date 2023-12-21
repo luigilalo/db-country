@@ -26,7 +26,6 @@ on c2.continent_id = r.continent_id
 group by c.name , r.name , c2.name 
 order by c.name ASC 
 
-
 -- 8. Selezionare il Gross domestic product (GDP) medio dello United Kingdom tra il 2000 e il 2010
 select c.name, AVG(cs.gdp)
 from countries c join country_stats cs 
@@ -44,3 +43,23 @@ order by c.area DESC
 -- 10. Modificare la nazione di nome Italy, inserendo come national day il 2 giugno 1946
 update countries set national_day = '1946-06-02'
 where name like  'Italy'
+
+-- 11 Selezionare le nazioni il cui national day è avvenuto prima del 1900, ordinate per national day dal più recente al meno recente
+
+select *
+from countries c 
+where year(national_day) < 1900
+order by national_day desc
+
+-- 12 Contare quante lingue sono parlate in Italia
+select count(*)
+from languages l 
+join country_languages cl on l.language_id = cl.language_id 
+join countries c on cl.country_id = c.country_id 
+where c.name = 'Italy'
+
+-- 13. Per la regione Antarctica mostrare il valore dell’area totale e dell’area media delle nazioni
+select sum(c.area), avg(c.area)
+from regions r 
+join countries c on r.region_id = c.region_id 
+where r.name = 'Antarctica'
