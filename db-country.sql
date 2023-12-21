@@ -19,3 +19,6 @@ from regions r join continents c on r.continent_id=c.continent_id where c.name =
 -- 5 Selezionare quali nazioni non hanno un national day
 select 	c.name from countries c where c.national_day IS NULL
 
+-- 10 Modificare la nazione di nome Italy, inserendo come national day il 2 giugno 1946
+update countries set national_day = '1946-06-02'
+where name like  'Italy';
