@@ -14,4 +14,8 @@ Order by name
 
 -- 4 Contare quante regioni sono presenti nel continente Africa
 select count(*)
-from regions r join continents c on r.continent_id=c.continent_id where c.name = 'Africa';
+from regions r join continents c on r.continent_id=c.continent_id where c.name = 'Africa'
+
+-- 5 Selezionare quali nazioni non hanno un national day
+select 	c.name from countries c where c.national_day IS NULL
+
